@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/jquery.mobile-1.0.css"></link>
+		
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/underscore.js"></script>
+		<script type="text/javascript" src="js/backbone.js"></script>
+		<script type="text/javascript" src="js/backbone.localStorage.js"></script>
+		
+		
+	</head>
+	<body id="body">
+	
+		<!-- Home Page -->
+		<div id="home" data-role="page">
+			<div data-role="header">
+				<h1>Local Notes</h1>
+				<a href="#new" data-role="button" class="ui-btn-right" data-icon="plus" data-rel="dialog" data-transition="pop">New</a>
+			</div>
+			
+			<div data-role="content">
+				<a href="#new" data-role="button" data-icon="plus" data-theme="b" data-rel="dialog" data-transition="pop">New Note</a>
+				
+				<ul data-role="listview" data-inset="true" data-theme="c">
+					<li><a href="#all">All Notes</a></li>
+					<li><a href="#nearest">Nearest Notes</a/></li>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- New Note Page -->
+		<div id="new" data-role="page">
+			<div data-role="header">
+				<h1>New Note</h1>
+			</div>
+			
+			<div data-role="content">
+				<form action="#" method="post">
+					
+					<div data-role="fieldcontain">
+						<label for="title">Title</label>
+						<input id="title" name="title" value="">
+					</div>
+					
+					<div data-role="fieldcontain">
+						<label for="body">Body</label>
+						<textarea id="body" name="body">
+						</textarea>
+					</div>
+					
+					<button data-icon="check" data-theme="b">Save</button>
+				</form>
+			</div>
+		</div>
+		
+		<!-- All Notes -->
+		<div id="all" data-role="page">
+			<div data-role="header">
+				<a href="#home" data-role="button" data-icon="arrow-l" data-direction="reverse">Back</a>
+				<h1>All Notes</h1>
+				<a href="#new" data-role="button" class="ui-btn-right" data-icon="plus" data-rel="dialog" data-transition="pop">New</a>
+			</div>
+			
+			<div data-role="content">
+				<ul data-role="listview" id="all_notes">
+					
+				</ul>
+			</div>
+		</div>
+		
+		<div id="note-detail-list">
+		</div>
+		
+		<script type="text/template" id="note-list-item-template">
+			<a href="#note_<%= note.id %>" ><%= note.get("title") %></a>
+		</script>
+		
+		<script type="text/template" id="note-detail-template">
+			<div data-role="header">
+				<a href="#all" data-role="button" data-icon="back" data-direction="reverse">
+					Back
+				</a>
+				<h1><%= note.get("title") %></h1>
+			</div>
+			<div data-role="content">
+				<%= note.get("body") %>
+			</div>
+		</script>
+		
+		<script type="text/javascript" src="js/application.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.0.js"></script>
+	</body>
+</html>
